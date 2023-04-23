@@ -1,0 +1,95 @@
+2.1 (Написати функцію, яка обчислює суму ряду:Для обчислення факторіала,використати рекурсію)
+
+def factorial(n):
+    "Function for calculating the factorial"
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+
+
+def sum_of_series(n):
+    "A function for calculating the sum of a series"
+    sum = 0
+    for i in range(1, n+1):
+        sum += (3**i * i * factorial(i)) / (i**i)
+        print(f"The sum to the {i}-th term: {sum}")
+    return sum
+
+n = int(input("Enter the value n: "))
+result = sum_of_series(n)
+print("The sum of the series:", result)
+
+2.2 (Написати програму, яка використовуючи рекурсію виконує множення натуральних чисел через операцію додавання, не використовуючи операцію множення.)
+
+def multiplication(x, y):
+    "Function for multiplication of natural numbers"
+    if y == 0:
+        return 0
+    else:
+        return x + multiplication(x, y-1)
+
+x = int(input("Enter the first number: "))
+y = int(input("Enter the second number: "))
+result = multiplication(x, y)
+print("Product:", result)
+
+2.3(Написати програму, яка використовуючи рекурсію виконує цілочисельне ділення натуральних чисел через операцію віднімання, не використовуючи операцію ділення.)
+
+def integer_division(dividend, divisor):
+    "Function for integer division"
+    if dividend < divisor:
+        return 0
+    else:
+        return 1 + integer_division(dividend - divisor, divisor)
+
+dividend = int(input("Enter the dividend: "))
+divisor = int(input("Enter the divisor: "))
+result = integer_division(dividend, divisor)
+print("Fraction:", result)
+
+---Списки---
+
+2.1(Створити список із елементів, елементами якого є елементи матриці: Знайти середнє арифметичне всіх елементів масиву та суму всіх непарних елементів масиву та добуток елементів головної діагоналі.)
+
+list1 = [1, 4, 7]
+list2 = [21, 19, 5]
+list3 = [6, 11, 9]
+
+matrix = [list1, list2, list3]
+
+# Arithmetic average of all elements of the matrix
+total_sum = 0
+count = 0
+for row in matrix:
+    for element in row:
+        total_sum += element
+        count += 1
+
+average = total_sum / count
+print("Arithmetic average of all elements of the matrix:", average)
+
+# The sum of odd matrix elements
+odd_sum = 0
+for row in matrix:
+    for element in row:
+        if element % 2 != 0:
+            odd_sum += element
+
+print("The sum of odd matrix elements:", odd_sum)
+
+# The product of the elements of the main diagonal
+diagonal_product = 1
+
+2.2(Написати функцію, яка знаходить найбільший спільний дільник двох цілих чисел, уведених із клавіатури і таких, що передаються цій функції в якості аргументів.)
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+
+a = int(input("Enter the first number: "))
+b = int(input("Enter the second number: "))
+result = gcd(a, b)
+print("The greatest common denominator:", result)
