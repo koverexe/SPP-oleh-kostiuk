@@ -1,0 +1,86 @@
+from tkinter import *
+import re
+
+root = Tk()
+
+def count_words(s):
+    words = s.split()
+    return len(words)
+
+def count_sentences(s):
+    sentences = re.split('[.!?]+', s)
+    return len(sentences)
+
+def count_unique_words(s):
+    words = s.split()
+    unique_words = set(words)
+    return len(unique_words)
+
+def count_distinct_words(s):
+    words = s.split()
+    distinct_words = [word for word in words if words.count(word) == 1]
+    return len(distinct_words)
+
+def count_repeated_words(s):
+    words = s.split()
+    word_counts = {}
+    for word in words:
+        if word in word_counts:
+            word_counts[word] += 1
+        else:
+            word_counts[word] = 1
+    repeated_words = [word for word in word_counts if word_counts[word] > 2]
+    return {word: word_counts[word] for word in repeated_words}
+
+def count_punctuation(s):
+    punctuation_counts = {}
+    for char in s:
+        if char in ' .,?!':
+            if char in punctuation_counts:
+                punctuation_counts[char] += 1
+            else:
+                punctuation_counts[char] = 1
+    return punctuation_counts
+
+def find_numbers(s):
+    numbers = re.findall(r'\d+', s)
+    number_counts = {}
+    for number in numbers:
+        if number in number_counts:
+            number_counts[number] += 1
+        else:
+            number_counts[number] = 1
+    return number_counts
+
+def analyze_text():
+    text = text_input.get('1.0', END)
+    words_count = count_words(text)
+    sentences_count = count_sentences(text)
+    unique_words_count = count_unique_words(text)
+    distinct_words_count = count_distinct_words(text)
+    repeated_words = count_repeated_words(text)
+    punctuation_counts = count_punctuation(text)
+    numbers_counts = find_numbers(text)
+
+    results_text.delete('1.0', END)
+    results_text.insert(END, f"Words count: {words_count}\n")
+    results_text.insert(END, f"Sentences count: {sentences_count}\n")
+    results_text.insert(END, f"Unique words count: {unique_words_count}\n")
+    results_text.insert(END, f"Distinct words count: {distinct_words_count}\n")
+    results_text.insert(END, f"Repeated words count: {repeated_words}\n")
+    results_text.insert(END, f"Punctuation counts: {punctuation_counts}\n")
+    results_text.insert(END, f"Numbers counts: {numbers_counts}\n")
+
+# Create GUI elements
+text_input_label = Label(root, text="Enter text:")
+text_input = Text(root, height=10, width=50)
+analyze_button = Button(root, text="Analyze", command=analyze_text)
+results_text = Text(root, height=10, width=50)
+
+# Add elements to grid
+text_input_label.grid(row=0, column=0)
+text_input.grid(row=1, column=0)
+analyze_button.grid(row=2, column=0)
+results_text.grid(row=3, column=0)
+
+root.mainloop()
