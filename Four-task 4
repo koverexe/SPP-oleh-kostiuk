@@ -1,0 +1,51 @@
+4.1 (Кортежі)
+
+# Відношення R1 та R2
+R1 = [("Іванов", "Математика", 5), ("Петренко", "Фізика", 3)]
+R2 = [("Іванов", "Математика", 5), ("Іванов", "Фізика", 4)]
+
+# Об'єднання
+union = set(R1) | set(R2)
+print("Об'єднання: ", union)
+
+# Перетин
+intersection = set(R1) & set(R2)
+print("Перетин: ", intersection)
+
+# Різниця
+difference = set(R1) - set(R2)
+print("Різниця: ", difference)
+
+4.2(Словники)
+
+def complex_to_dict(complex_dict):
+    simple_dicts = []
+    for key, value in complex_dict.items():
+        simple_dicts.append(value)
+    return tuple(simple_dicts)
+
+weather = {
+1: {"obsv": "sun", "tmpr": "hotly", "hmdt": "high", "wind": "no"},
+2: {"obsv": "sun", "tmpr": "hotly", "hmdt": "high", "wind": "there is"}, 
+3: {"obsv": "overcast", "tmpr": "hotly", "hmdt": "high", "wind": "no"} 
+}
+
+weather1, weather2, weather3 = complex_to_dict(weather)
+
+print(weather1)
+print(weather2)
+print(weather3)
+
+4.3(Множини)
+
+def cartesian_product(set1, set2):
+    result = set()
+    for elem1 in set1:
+        for elem2 in set2:
+            result.add((elem1, elem2))
+    return result
+
+set1 = {10, 20, 30}
+set2 = {'A', 'B', 'C'}
+result = cartesian_product(set1, set2)
+print(result)
