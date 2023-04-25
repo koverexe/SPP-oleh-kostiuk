@@ -58,7 +58,6 @@ list3 = [6, 11, 9]
 
 matrix = [list1, list2, list3]
 
-# Arithmetic average of all elements of the matrix
 total_sum = 0
 count = 0
 for row in matrix:
@@ -69,7 +68,6 @@ for row in matrix:
 average = total_sum / count
 print("Arithmetic average of all elements of the matrix:", average)
 
-# The sum of odd matrix elements
 odd_sum = 0
 for row in matrix:
     for element in row:
@@ -78,7 +76,6 @@ for row in matrix:
 
 print("The sum of odd matrix elements:", odd_sum)
 
-# The product of the elements of the main diagonal
 diagonal_product = 1
 
 2.2(Написати функцію, яка знаходить найбільший спільний дільник двох цілих чисел, уведених із клавіатури і таких, що передаються цій функції в якості аргументів.)
